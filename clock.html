@@ -7,8 +7,15 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
     <title></title>
+    <style>
+        body{background: #ddd;}
+        /*#canvas{ display: none;}*/
+        img{border: none}
+        #snapshotImageElement{ position: absolute; left:10px;margin: 20px;border: thin solid #aaa;}
+    </style>
 </head>
 <body>
+<img id="snapshotImageElement" alt="">
 <canvas id="canvas" width="500" height="500"></canvas>
 <script>
     var canvas = document.getElementById('canvas'),
@@ -19,7 +26,11 @@
             HOUR_HAND_TRUNCATION = canvas.width / 10,
             NUMERAL_SPACING = 20,
             RADIUS = canvas.width / 2 - MARGIN,
+            snapshotImageElement = document.getElementById('snapshotImageElement');
             HANDS_RADIUS = RADIUS + NUMERAL_SPACING;
+//    function updateClokcImage() {
+//        snapshotImageElement.src = canvas.toDataURL();
+//    }
     function drawCircle() {
         context.beginPath();
         context.arc(canvas.width / 2, canvas.height / 2, RADIUS, 0, Math.PI * 2, true);
@@ -62,6 +73,7 @@
         drawCenter();
         drawHands();
         drawNumerals();
+//        updateClokcImage();
     }
     context.font = FONT_HEIGHT + "px Arial";
     loop = setInterval(drawClock, 1000);

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="500"></canvas>
+<script>
+    var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d');
+    context.lineJoin = 'miter';
+    context.lineWidth = 1;
+    context.fillStyle = "blue";
+    context.font = '24px Helvetica';
+    context.fillText('click anywhere to earse', 175, 40);
+    context.strokeRect(75, 100, 200, 200);
+    context.fillRect(74, 100, 100, 100);
+    context.canvas.onmousedown = function (e) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+</script>
+</body>
+</html>

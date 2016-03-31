@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <title></title>
+</head>
+<body>
+<div id="radios">
+    <input type="radio" id="repeatRadio" name="patternRadio" checked>repeat
+    <input type="radio" id="repeatXRadio" name="patternRadio" >repeat-x
+    <input type="radio" id="repeatYRadio" name="patternRadio" >repeat-y
+    <input type="radio" id="noRepeatRadio" name="patternRadio" >no repeat
+</div>
+<canvas id="canvas" width="4000" height="2000"></canvas>
+<script>
+    var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            repeatRadio = document.getElementById('repeatRadio'),
+            noRepeatRadio = document.getElementById('noRepeatRadio'),
+            repeatXRadio = document.getElementById('repeatXRadio'),
+            repeatYRadio = document.getElementById('repeatYRadio'),
+            image = new Image();
+
+    function fillCanvasWithPattern(repeatString) {
+        var pattern = context.createPattern(image, repeatString);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = pattern;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fill();
+    }
+    repeatRadio.onclick = function (e) {
+        fillCanvasWithPattern('repeat');
+    };
+    repeatXRadio.onclick = function (e) {
+        fillCanvasWithPattern('repeat-x');
+    };
+    repeatYRadio.onclick = function (e) {
+        fillCanvasWithPattern('repeat-y');
+    };
+    noRepeatRadio.onclick = function (e) {
+        fillCanvasWithPattern('no-repeat')
+    };
+    image.src = "back_to_the_sea-wallpaper-1920x1200.jpg";
+    image.onload = function (e) {
+        fillCanvasWithPattern('repeat')
+    }
+</script>
+</body>
+</html>
