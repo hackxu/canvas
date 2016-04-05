@@ -19,10 +19,10 @@ function expandDottedLine(id) {
         var deltaX = x - startX;
         var deltaY = y - startY;
         var numDashes = Math.floor(Math.sqrt(deltaX * deltaX + deltaY * deltaY) / dashLenth);
-        
-        for (var i =0;i<numDashes;++i){
-            
-        }
-    }
 
-};
+        for (var i = 0; i < numDashes; ++i) {
+            this[i % 2 === 0 ? 'moveTo' : 'lineTo'](startX + (deltaX / numDashes) * i, startY + (deltaY / numDashes) * i);
+        }
+        this.moveTo(x, y)
+    };
+}
