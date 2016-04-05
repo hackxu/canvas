@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="600"></canvas>
+<script>
+    var context = document.getElementById('canvas').getContext('2d');
+    function drawGrid(color, stepx, stepy) {
+
+    }
+    function drawTwoArcs() {
+        context.beginPath();
+        context.arc(300, 190, 150, 0, Math.PI * 2, false);
+        context.arc(300, 190, 100, 0, Math.PI * 2, true);
+
+        context.fill();
+        context.shadowColor = undefined;
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
+        context.stroke();
+    }
+    function draw() {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        drawGrid('lightgray', 10, 10);
+        context.save();
+        context.shadowColor = 'rbga(0,0,0,0.8)';
+        context.shadowOffsetX = 12;
+        context.shadowOffsetY = 12;
+        context.shadowBlur = 15;
+        drawTwoArcs();
+        context.restore();
+    }
+    context.fillStyle = 'rgba(100,140,230,0.5)';
+    context.strokeStyle = context.fillStyle;
+    draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="1000"></canvas>
+<script>
+    var context = document.getElementById('canvas').getContext('2d');
+    function drawGrid(context, color, stepx, stepy) {
+        context.strokeStyle = color;
+        context.lineWidth = 0.5;
+        for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+            context.beginPath();
+            context.moveTo(i, 0);
+            context.lineTo(i, context.canvas.height);
+            context.stroke();
+        }
+        for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+            context.beginPath();
+            context.moveTo(0, i);
+            context.lineTo(context.canvas.width, i);
+            context.stroke();
+        }
+    }
+    drawGrid(context,'lightgray',10,10)
+</script>
+</body>
+</html>
